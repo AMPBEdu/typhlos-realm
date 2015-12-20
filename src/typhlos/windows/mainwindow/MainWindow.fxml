@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typhlos.windows.mainwindow.MainWindowController">
+   <children>
+      <AnchorPane prefHeight="220.0" prefWidth="360.0">
+         <children>
+            <Label layoutX="154.0" layoutY="14.0" text="gjfxClient" />
+            <Label layoutX="76.0" layoutY="54.0" text="Username" />
+            <TextField fx:id="username" layoutX="28.0" layoutY="71.0" AnchorPane.leftAnchor="30.0" />
+            <PasswordField fx:id="password" layoutX="28.0" layoutY="127.0" AnchorPane.leftAnchor="30.0" />
+            <Label layoutX="78.0" layoutY="110.0" text="Password" />
+            <Button fx:id="login" layoutX="80.0" layoutY="173.0" mnemonicParsing="false" text="Login" />
+            <TextField fx:id="server" layoutX="197.0" layoutY="71.0" prefHeight="25.0" prefWidth="125.0" text="127.0.0.1" AnchorPane.rightAnchor="30.0" />
+            <TextField fx:id="port" layoutX="243.0" layoutY="127.0" prefHeight="25.0" prefWidth="50.0" text="2050" AnchorPane.rightAnchor="67.0" />
+            <Label layoutX="251.0" layoutY="54.0" text="Server" />
+            <Text layoutX="257.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Port" />
+            <Button fx:id="sendHello" layoutX="231.0" layoutY="173.0" mnemonicParsing="false" text="Send Hello" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

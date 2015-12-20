@@ -62,7 +62,7 @@ public class Client {
 
 	public void runListenThread() {
 		try {
-			socket = new Socket(localhost, port);
+			socket = new Socket(server, port);
 			setWrite(new DataOutputStream(socket.getOutputStream()));
 			setRead(new DataInputStream(socket.getInputStream()));
 		} catch (IOException e) {

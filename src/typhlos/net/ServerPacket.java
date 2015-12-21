@@ -1,5 +1,6 @@
 package typhlos.net;
 
+import typhlos.client.Client;
 
 public class ServerPacket extends Packet{
 	
@@ -14,8 +15,7 @@ public class ServerPacket extends Packet{
 	/*
 	 * Place to do something whenever you receive a packet.
 	 */
-	public void onReceive(){
-		this.parseData();
-		
+	public void onReceive(Client client){
+		System.out.println("ServerPacket onReceive Method");
 	}
 }

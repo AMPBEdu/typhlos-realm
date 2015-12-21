@@ -1,42 +1,45 @@
 package typhlos.net.data;
 
+import typhlos.client.Client;
 import typhlos.net.ServerPacket;
+import typhlos.net.server.MapInfoPacket;
 import typhlos.net.server.TestPacket;
 
 public enum ServerPackets {
-	TEST(-119, new TestPacket()), 
-	UNKNOWN(-1, new ServerPacket());
-	
+	MAPINFO(58);
+
 	int id;
-	ServerPacket packet;
-	
-	ServerPackets(int id, ServerPacket packet){
+
+	ServerPackets(int id) {
 		this.id = id;
-		this.packet = packet;
 	}
-	
-	public int id(){
+
+	public int id() {
 		return id;
 	}
-	
-	ServerPacket get(){
-		return packet;
-	}
-	
-	public static void process(int id, byte[] data){
+
+	public static void process(Client client, int id, byte[] data) {
 		boolean known = false;
 		System.out.println("s2c:id:" + id);
-		for(ServerPackets packet : ServerPackets.values()){
-			if(id == packet.id){
+		for (ServerPackets packet : ServerPackets.values()) {
+			if (id == packet.id) {
 				known = true;
-				ServerPacket receivedPacket = new ServerPacket(id, data);
-				receivedPacket.onReceive();
+				parse(id, data).onReceive(client);
 				System.out.println("Known: " + id);
 				break;
 			}
 		}
-		if(!known){
+		if (!known) {
 			System.out.println("s2c:Unknown: " + id);
+		}
+	}
+
+	public static ServerPacket parse(int id, byte[] data) {
+		switch (id) {
+		case 58:
+			return new MapInfoPacket(data);
+		default:
+			return new ServerPacket(id, data);
 		}
 	}
 }

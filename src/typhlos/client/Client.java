@@ -2,6 +2,7 @@ package typhlos.client;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,9 +20,10 @@ public class Client {
 
 	private String username;
 	private String password;
+	
+	private final Client client = this;
 
 	private InetAddress server;
-	private InetAddress localhost;
 	private Socket socket;
 	private int port;
 	private boolean connected = false;
@@ -39,7 +41,6 @@ public class Client {
 		this.password = password;
 		this.port = port;
 		try {
-			this.localhost = InetAddress.getByName("localhost");
 			//Set this.server = InetAddress.getByName(server); if you want to use server from gui
 			this.server = InetAddress.getByName(server);
 			//this.server = InetAddress.getByName("ec2-54-80-67-112.compute-1.amazonaws.com");
@@ -58,6 +59,7 @@ public class Client {
 
 		HelloPacket hello = new HelloPacket(username, password);
 		hello.send(this);
+		System.out.println("Hello");
 	}
 
 	public void runListenThread() {
@@ -68,10 +70,12 @@ public class Client {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("Connected!");
 		setConnected(true);
 		
 		receive = new Thread("receive") {
 			public void run() {
+				System.out.println("ALLRIGHT IM GOING");
 				while(isConnected()){
 				try {
 					int length = read.readInt();
@@ -79,11 +83,16 @@ public class Client {
 					System.out.println(id);
 					byte[] data = new byte[length - 5];
 					read.readFully(data);
-					ServerPackets.process(id, data);
+					//System.out.println(id + ":" + length + ":" + new String(cipherIn.rc4(data)));
+					ServerPackets.process(client, id, data);
+				}catch(EOFException e){
+					//e.printStackTrace();
 				} catch (IOException e) {
 					e.printStackTrace();
+					break;
 				}
 				}
+				connected = false;
 			}
 		};
 		

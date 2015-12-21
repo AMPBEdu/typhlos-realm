@@ -13,14 +13,14 @@ import typhlos.net.data.ClientPackets;
 
 public class HelloPacket extends ClientPacket {
 	
-	private String buildVersion = "";
-	private int gameId = 0;
+	private String buildVersion = "27.7.0";
+	private int gameId = -2;
 	private String guid = "";
 	private static final int random0 = (int) Math.floor(Math.random() * 1000000000);
 	private String password = "";
 	private static final int random1 = (int) Math.floor(Math.random() * 1000000000);
 	private String secret = "";
-	private int keyTime;
+	private int keyTime = -1;
 	private byte[] key = new byte[0];
 	private byte[] obf1 = new byte[0];
 	public String obf2 = "";
@@ -31,11 +31,8 @@ public class HelloPacket extends ClientPacket {
 
 	public HelloPacket(String username, String password) {
 		this.id = ClientPackets.HELLO.id();
-		this.buildVersion = "27.7.0";
-		this.gameId = -2;
 		this.guid = GUID.encrypt(username);
 		this.password = GUID.encrypt(password);
-		this.keyTime = -1;
 	}
 	
 	// parse data to variables

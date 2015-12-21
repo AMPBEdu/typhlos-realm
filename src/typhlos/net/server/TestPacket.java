@@ -1,5 +1,6 @@
 package typhlos.net.server;
 
+import typhlos.client.Client;
 import typhlos.net.ServerPacket;
 import typhlos.net.data.ServerPackets;
 
@@ -21,8 +22,8 @@ public class TestPacket extends ServerPacket{
 		id = testId;
 	}
 
-	public void onReceive(){
-		super.onReceive();
+	public void onReceive(Client client){
+		super.onReceive(client);
 		System.out.println(text);
 	}
 	

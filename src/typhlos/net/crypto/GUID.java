@@ -1,18 +1,6 @@
-/* oryx-hates-java
+/* GUID.java
  * Copyright (C) 2011-2012 Furyhunter <furyhunter600@gmail.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * The code in this file is distributed under the GNU General Public License V3.
  */
 
 package typhlos.net.crypto;
@@ -30,7 +18,10 @@ public class GUID {
 
 	private static int counter = 0;
 	private static final String serverPublicKey = 
-			"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqccYHTj4QATbK1m4UVgcTeEYtDZwZxwdayVTFs1jAwKWzoDt/CXhYUX2cEJnA93T4h6a4ysTfUrgBFZ3Nsb4W3/4Crc2TxjOWQOoWQnhzblZEiTcAmIdwdq8AfuZWjRpGhOzHDPK9hcgySrzqD9HJAUsbG2ZzU5zrxHtEPC0nUQIDAQAB"; //base64 encoded DEM i.e. PEM
+			"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCKFctVrhfF3m2Kes0FBL/JFeO"
+			+ "cmNg9eJz8k/hQy1kadD+XFUpluRqa//Uxp2s9W2qE0EoUCu59ugcf/p7lGuL99Uo"
+			+ "SGmQEynkBvZct+/M40L0E0rZ4BVgzLOJmIbXMp0J4PnPcb6VLZvxazGcmSfjauC7"
+			+ "F3yWYqUbZd/HCBtawwIDAQAB"; //base64 encoded DEM i.e. PEM
 	private static PublicKey key;
 	
 

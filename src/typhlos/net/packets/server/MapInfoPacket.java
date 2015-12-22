@@ -1,9 +1,9 @@
-package typhlos.net.server;
+package typhlos.net.packets.server;
 
 import typhlos.client.Client;
-import typhlos.net.ServerPacket;
-import typhlos.net.data.ServerPackets;
-import typhlos.net.client.LoadPacket;
+import typhlos.net.packets.ServerPacket;
+import typhlos.net.packets.ServerPackets;
+import typhlos.net.packets.client.LoadPacket;
 
 public class MapInfoPacket extends ServerPacket{
 	

@@ -1,4 +1,4 @@
-package typhlos.net.data;
+package typhlos.net.packets;
 
 public enum ClientPackets {
 	HELLO(83), LOAD(66);

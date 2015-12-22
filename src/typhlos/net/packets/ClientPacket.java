@@ -1,4 +1,4 @@
-package typhlos.net;
+package typhlos.net.packets;
 
 import java.io.DataOutput;
 import java.io.IOException;

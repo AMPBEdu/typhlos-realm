@@ -1,4 +1,4 @@
-package typhlos.net.client;
+package typhlos.net.packets.client;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInput;
@@ -7,9 +7,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import typhlos.client.Client;
-import typhlos.net.ClientPacket;
 import typhlos.net.crypto.GUID;
-import typhlos.net.data.ClientPackets;
+import typhlos.net.packets.ClientPacket;
+import typhlos.net.packets.ClientPackets;
 
 public class HelloPacket extends ClientPacket {
 	

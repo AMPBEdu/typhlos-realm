@@ -11,10 +11,11 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 
-import typhlos.net.Packet;
-import typhlos.net.client.HelloPacket;
 import typhlos.net.crypto.RC4;
 import typhlos.net.data.*;
+import typhlos.net.packets.Packet;
+import typhlos.net.packets.ServerPackets;
+import typhlos.net.packets.client.HelloPacket;
 
 public class Client {
 
@@ -80,7 +81,6 @@ public class Client {
 				try {
 					int length = read.readInt();
 					byte id = read.readByte();
-					System.out.println(id);
 					byte[] data = new byte[length - 5];
 					read.readFully(data);
 					//System.out.println(id + ":" + length + ":" + new String(cipherIn.rc4(data)));

@@ -1,9 +1,8 @@
-package typhlos.net.data;
+package typhlos.net.packets;
 
 import typhlos.client.Client;
-import typhlos.net.ServerPacket;
-import typhlos.net.server.MapInfoPacket;
-import typhlos.net.server.TestPacket;
+import typhlos.net.packets.server.MapInfoPacket;
+import typhlos.net.packets.server.TestPacket;
 
 public enum ServerPackets {
 	MAPINFO(58);
@@ -20,12 +19,11 @@ public enum ServerPackets {
 
 	public static void process(Client client, int id, byte[] data) {
 		boolean known = false;
-		System.out.println("s2c:id:" + id);
 		for (ServerPackets packet : ServerPackets.values()) {
 			if (id == packet.id) {
 				known = true;
 				parse(id, data).onReceive(client);
-				System.out.println("Known: " + id);
+				System.out.println("s2c:Known: " + id);
 				break;
 			}
 		}

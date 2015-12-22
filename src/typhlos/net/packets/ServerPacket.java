@@ -1,4 +1,4 @@
-package typhlos.net;
+package typhlos.net.packets;
 
 import typhlos.client.Client;
 

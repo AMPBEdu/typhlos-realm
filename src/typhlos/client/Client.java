@@ -84,6 +84,7 @@ public class Client {
 						byte id = read.readByte();
 						byte[] data = new byte[length - 5];
 						read.readFully(data);
+						System.out.println(id + ":data:" + new String(data));
 						// System.out.println(id + ":" + length + ":" + new
 						// String(cipherIn.rc4(data)));
 						ServerPacket receivedPacket = (ServerPacket)Packets.parse(id, data);

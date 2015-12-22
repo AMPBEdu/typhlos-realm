@@ -26,7 +26,6 @@ public class ClientPacket extends Packet{
 		}
 		try {
 			byte[] data = this.getData();
-			System.out.println(data.length);
 			client.getWrite().writeInt(data.length + 5);
 			client.getWrite().writeByte(this.getID());
 			client.getWrite().write(client.getCipherOut().rc4(data));

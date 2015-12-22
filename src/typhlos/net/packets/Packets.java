@@ -1,8 +1,12 @@
 package typhlos.net.packets;
 
+<<<<<<< HEAD
 import typhlos.net.packets.server.MapInfoPacket;
 import typhlos.net.packets.server.PingPacket;
 import typhlos.net.packets.server.UpdatePacket;
+=======
+import typhlos.net.packets.server.*;
+>>>>>>> f3648857ccf008064cfda2e79c770f577dc0be63
 
 public class Packets {
 	// This is used for the packet templates
@@ -105,12 +109,16 @@ public class Packets {
 
 	public static Packet parse(int id, byte[] data) {
 		switch (id) {
-		case Packets.MAPINFO:
-			return new MapInfoPacket(data);
-		case Packets.PING:
-			return new PingPacket(data);
-		case Packets.UPDATE:
-			return new UpdatePacket(data);
+			case Packets.MAPINFO:
+				return new MapInfoPacket(data);
+			case Packets.PING:
+				return new PingPacket(data);
+			case Packets.DEATH:
+				return new DeathPacket(data);
+			case Packets.TEXT:
+				return new TextPacket(data);
+			case Packets.UPDATE:
+				return new UpdatePacket(data);
 		default:
 			return new ServerPacket(id, data);
 		}

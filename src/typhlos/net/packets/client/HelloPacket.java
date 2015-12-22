@@ -1,19 +1,16 @@
 package typhlos.net.packets.client;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataInput;
 import java.io.DataOutput;
-import java.io.DataOutputStream;
 import java.io.IOException;
 
 import typhlos.client.Client;
 import typhlos.net.crypto.GUID;
+import typhlos.net.data.ByteArrayDataInput;
 import typhlos.net.packets.ClientPacket;
-import typhlos.net.packets.ClientPackets;
+import typhlos.net.packets.Packets;
 
 public class HelloPacket extends ClientPacket {
 	
-	private String buildVersion = "27.7.0";
 	private int gameId = -2;
 	private String guid = "";
 	private static final int random0 = (int) Math.floor(Math.random() * 1000000000);
@@ -29,19 +26,32 @@ public class HelloPacket extends ClientPacket {
 	public String obf5 = "";
 	public String obf6 = "";
 
+	public HelloPacket(){
+		this.id = Packets.HELLO;
+	}
+	
+	public HelloPacket(byte[] data){
+		this.id = Packets.HELLO;
+		readData(data);
+	}
+	
 	public HelloPacket(String username, String password) {
-		this.id = ClientPackets.HELLO.id();
+		this.id = Packets.HELLO;
 		this.guid = GUID.encrypt(username);
 		this.password = GUID.encrypt(password);
 	}
 	
 	// parse data to variables
-	public void parseData(DataInput in) {
+	public void readData(byte[] data) {
+		super.readData(data);
+		ByteArrayDataInput in = new ByteArrayDataInput(data);
 		try {
-			this.buildVersion = in.readUTF();
+			in.readUTF();
 			this.gameId = in.readInt();
 			this.guid = in.readUTF();
+			in.readInt();
 			this.password = in.readUTF();
+			in.readInt();
 			this.secret = in.readUTF();
 			this.keyTime = in.readInt();
 			this.key = new byte[in.readShort()];
@@ -55,8 +65,9 @@ public class HelloPacket extends ClientPacket {
 	}
 	
 	public void writeData(DataOutput out) {
+		super.writeData(out);
 		try {
-			out.writeUTF(this.buildVersion);
+			out.writeUTF(Client.buildVersion);
 			out.writeInt(this.gameId);
 			out.writeUTF(this.guid);
 			out.writeInt(random0);
@@ -78,16 +89,7 @@ public class HelloPacket extends ClientPacket {
 		}
 	}
 	
-	public byte[] getBytes() throws IOException {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		DataOutputStream out = new DataOutputStream(baos);
-		this.writeData(out);
-		//System.out.println(new String(baos.toByteArray()));
-		return baos.toByteArray();
-	}
-	
 	public void send(Client client){
 		super.send(client);
-		//Do something whenever this type of packet is sent.
 	}
 }

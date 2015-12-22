@@ -9,29 +9,24 @@ import java.io.IOException;
 public class Packet {
 
 	protected int id;
+	protected byte[] data;
 
 	public Packet() {
-
+		
 	}
 
 	public Packet(int id, byte[] data) {
 		this.id = id;
+		this.data = data;
+		this.readData(data);
 	}
 
-	public byte[] getBytes() throws IOException {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		DataOutputStream out = new DataOutputStream(baos);
-		this.writeData(out);
-		//System.out.println(new String(baos.toByteArray()));
-		return baos.toByteArray();
+	public void readData(byte[] data){
+		this.data = data;
 	}
-
-	private void writeData(DataOutput out) {
+	
+	public void writeData(DataOutput out) {
 		
-	}
-
-	public void parseData() {
-
 	}
 
 	public int getID() {
@@ -40,5 +35,25 @@ public class Packet {
 
 	public void setID(int id) {
 		this.id = id;
+	}
+	
+	public byte[] getData(){
+		try {
+			this.data = getBytes();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return this.data;
+	}
+	
+	public void setData(byte[] data){
+		this.readData(data);
+	}
+	
+	private byte[] getBytes() throws IOException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		DataOutputStream out = new DataOutputStream(baos);
+		this.writeData(out);
+		return baos.toByteArray();
 	}
 }

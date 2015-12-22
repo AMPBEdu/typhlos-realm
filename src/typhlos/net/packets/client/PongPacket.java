@@ -8,41 +8,40 @@ import typhlos.net.data.ByteArrayDataInput;
 import typhlos.net.packets.ClientPacket;
 import typhlos.net.packets.Packets;
 
-public class LoadPacket extends ClientPacket {
+public class PongPacket extends ClientPacket{
+
+	public int serial;
+	public int time;
 	
-	public int charId = 296;
-	public boolean isFromArena = false;
-	
-	public LoadPacket(){
-		this.id = Packets.LOAD;
+	public PongPacket(){
+		this.id = Packets.PONG;
 	}
 	
-	public LoadPacket(byte[] data){
-		this.id = Packets.LOAD;
+	public PongPacket(byte[] data){
 		readData(data);
 	}
 	
-	public LoadPacket(int charId){
-		this.id = Packets.LOAD;
-		this.charId = charId;
+	public PongPacket(int serial, int time){
+		this.id = Packets.PONG;
+		this.serial = serial;
+		this.time = time;
 	}
 	
-	public void readData(byte[] data) {
+	public void readData(byte[] data){
 		super.readData(data);
 		ByteArrayDataInput in = new ByteArrayDataInput(data);
 		try{
-		this.charId = in.readInt();
-		this.isFromArena = in.readBoolean();
+		this.serial = in.readInt();
+		this.time = in.readInt();
 		}catch(IOException e){
 			e.printStackTrace();
 		}
 	}
-
-	public void writeData(DataOutput out) {
-		super.writeData(out);
+	
+	public void writeData(DataOutput out){
 		try{
-		out.writeInt(this.charId);
-		out.writeBoolean(this.isFromArena);
+		out.writeInt(serial);
+		out.writeInt(time);
 		}catch(IOException e){
 			e.printStackTrace();
 		}

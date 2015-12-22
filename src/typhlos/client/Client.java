@@ -4,31 +4,29 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Arrays;
 
 import typhlos.net.crypto.RC4;
-import typhlos.net.data.*;
-import typhlos.net.packets.Packet;
-import typhlos.net.packets.ServerPackets;
+import typhlos.net.packets.Packets;
 import typhlos.net.packets.client.HelloPacket;
+import typhlos.net.packets.ServerPacket;
 
 public class Client {
 
 	private String username;
 	private String password;
-	
+
 	private final Client client = this;
 
+	public static final String buildVersion = "27.7.0";
 	private InetAddress server;
 	private Socket socket;
 	private int port;
 	private boolean connected = false;
 	private boolean running = true;
+	private long startTime;
 
 	private RC4 cipherOut = new RC4(fromHexString("311f80691451c71d09a13a2a6e"));
 	private RC4 cipherIn = new RC4(fromHexString("72c5583cafb6818995cdd74b80"));
@@ -42,9 +40,11 @@ public class Client {
 		this.password = password;
 		this.port = port;
 		try {
-			//Set this.server = InetAddress.getByName(server); if you want to use server from gui
+			// Set this.server = InetAddress.getByName(server); if you want to
+			// use server from gui
 			this.server = InetAddress.getByName(server);
-			//this.server = InetAddress.getByName("ec2-54-80-67-112.compute-1.amazonaws.com");
+			// this.server =
+			// InetAddress.getByName("ec2-54-80-67-112.compute-1.amazonaws.com");
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -66,6 +66,7 @@ public class Client {
 	public void runListenThread() {
 		try {
 			socket = new Socket(server, port);
+			startTime = System.currentTimeMillis();
 			setWrite(new DataOutputStream(socket.getOutputStream()));
 			setRead(new DataInputStream(socket.getInputStream()));
 		} catch (IOException e) {
@@ -73,29 +74,31 @@ public class Client {
 		}
 		System.out.println("Connected!");
 		setConnected(true);
-		
+
 		receive = new Thread("receive") {
 			public void run() {
 				System.out.println("ALLRIGHT IM GOING");
-				while(isConnected()){
-				try {
-					int length = read.readInt();
-					byte id = read.readByte();
-					byte[] data = new byte[length - 5];
-					read.readFully(data);
-					//System.out.println(id + ":" + length + ":" + new String(cipherIn.rc4(data)));
-					ServerPackets.process(client, id, data);
-				}catch(EOFException e){
-					//e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-					break;
-				}
+				while (isConnected()) {
+					try {
+						int length = read.readInt();
+						byte id = read.readByte();
+						byte[] data = new byte[length - 5];
+						read.readFully(data);
+						// System.out.println(id + ":" + length + ":" + new
+						// String(cipherIn.rc4(data)));
+						ServerPacket receivedPacket = (ServerPacket)Packets.parse(id, data);
+						receivedPacket.onReceive(client);
+					} catch (EOFException e) {
+						// e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+						break;
+					}
 				}
 				connected = false;
 			}
 		};
-		
+
 		receive.start();
 
 	}
@@ -153,6 +156,10 @@ public class Client {
 
 	public void setWrite(DataOutputStream write) {
 		this.write = write;
+	}
+
+	public long getStartTime() {
+		return startTime;
 	}
 
 }

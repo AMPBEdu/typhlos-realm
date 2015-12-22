@@ -8,14 +8,15 @@ public class ServerPacket extends Packet{
 		super();
 	}
 	
-	public ServerPacket(int id, byte[] data) {
+	public ServerPacket(int id, byte[] data){
 		super(id, data);
 	}
-
+	
 	/*
 	 * Place to do something whenever you receive a packet.
 	 */
 	public void onReceive(Client client){
-		System.out.println("ServerPacket onReceive Method");
+		//Place to do something whenever you receive a packet
+		//such as printing all incoming packets.
 	}
 }

@@ -1,11 +1,18 @@
 package typhlos.net.packets;
 
-import java.io.DataOutput;
 import java.io.IOException;
 
 import typhlos.client.Client;
 
 public class ClientPacket extends Packet{
+	
+	public ClientPacket(){
+		super();
+	}
+	
+	public ClientPacket(int id, byte[] data){
+		super(id, data);
+	}
 	
 	//Send the packet object to server
 	public void send(Client client){
@@ -18,7 +25,7 @@ public class ClientPacket extends Packet{
 			return;
 		}
 		try {
-			byte[] data = this.getBytes();
+			byte[] data = this.getData();
 			System.out.println(data.length);
 			client.getWrite().writeInt(data.length + 5);
 			client.getWrite().writeByte(this.getID());
@@ -26,8 +33,5 @@ public class ClientPacket extends Packet{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	public void writeData(DataOutput out){
-		
 	}
 }

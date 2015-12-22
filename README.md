@@ -10,11 +10,10 @@ Typhlos Realm is a renderless realm of the mad god client using a javafx gui.
 
 ##Features
 Bad temp gui
-Opens a socket and sends a hello packet w/ typed user/pass
+Connects to server using a proxy, disconnects due to protocol error (not sending move packet when receiving new_tick)
 
 ##TODOList
-1. Fix packet receiving and clean up code.
-2. Reply to mapinfo with loadpacket
-3. Reply to all mandatory replies.
-4. Expand functionality of gui.
-5. Expand packet functionality.
+1. Reply to NEW_TICK with MOVE packets.
+2. Fix connecting without proxy
+2. Expand functionality of gui.
+3. Expand packet functionality.

@@ -65,7 +65,6 @@ public class HelloPacket extends ClientPacket {
 	}
 	
 	public void writeData(DataOutput out) {
-		super.writeData(out);
 		try {
 			out.writeUTF(Client.buildVersion);
 			out.writeInt(this.gameId);

@@ -39,7 +39,6 @@ public class LoadPacket extends ClientPacket {
 	}
 
 	public void writeData(DataOutput out) {
-		super.writeData(out);
 		try{
 		out.writeInt(this.charId);
 		out.writeBoolean(this.isFromArena);

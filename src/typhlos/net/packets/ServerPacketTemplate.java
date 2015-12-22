@@ -22,6 +22,7 @@ public abstract class ServerPacketTemplate extends ServerPacket{
 	}
 	
 	public ServerPacketTemplate(int example, String example2){
+		this.id = Packets.EXAMPLE;
 		this.example = example;
 		this.example2 = example2;
 	}

@@ -10,6 +10,8 @@ import typhlos.net.packets.client.LoadPacket;
 
 public class MapInfoPacket extends ServerPacket{
 	
+	
+	
 	public MapInfoPacket(){
 		this.id = Packets.MAPINFO;
 	}
@@ -26,7 +28,6 @@ public class MapInfoPacket extends ServerPacket{
 	}
 	
 	public void writeData(DataOutput out){
-		super.writeData(out);
 	}
 	
 	public void onReceive(Client client){

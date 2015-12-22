@@ -2,6 +2,7 @@ package typhlos.net.packets;
 
 import typhlos.net.packets.server.MapInfoPacket;
 import typhlos.net.packets.server.PingPacket;
+import typhlos.net.packets.server.UpdatePacket;
 
 public class Packets {
 	// This is used for the packet templates
@@ -108,6 +109,8 @@ public class Packets {
 			return new MapInfoPacket(data);
 		case Packets.PING:
 			return new PingPacket(data);
+		case Packets.UPDATE:
+			return new UpdatePacket(data);
 		default:
 			return new ServerPacket(id, data);
 		}

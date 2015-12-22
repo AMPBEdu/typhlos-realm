@@ -1,27 +1,29 @@
-package typhlos.net.packets;
+package typhlos.net.packets.client;
 
 import java.io.DataOutput;
 import java.io.IOException;
 
 import typhlos.client.Client;
 import typhlos.net.data.ByteArrayDataInput;
+import typhlos.net.packets.ClientPacket;
+import typhlos.net.packets.Packets;
 
-public abstract class ClientPacketTemplate extends ClientPacket{
-	
+public class MovePacket extends ClientPacket{
+
 	private int example;
 	private String example2;
 	private boolean variableThatDoesntNeedToBeRead = false;
 	
-	public ClientPacketTemplate(){
-		this.id = Packets.EXAMPLE;
+	public MovePacket(){
+		this.id = Packets.MOVE;
 	}
 	
-	public ClientPacketTemplate(byte[] data){
-		this.id = Packets.EXAMPLE;
+	public MovePacket(byte[] data){
+		this.id = Packets.MOVE;
 	}
 	
-	public ClientPacketTemplate(int example, String example2){
-		this.id = Packets.EXAMPLE;
+	public MovePacket(int example, String example2){
+		this.id = Packets.MOVE;
 		this.example = example;
 		this.example2 = example2;
 	}

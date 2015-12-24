@@ -1,12 +1,6 @@
 package typhlos.net.packets;
 
-<<<<<<< HEAD
-import typhlos.net.packets.server.MapInfoPacket;
-import typhlos.net.packets.server.PingPacket;
-import typhlos.net.packets.server.UpdatePacket;
-=======
 import typhlos.net.packets.server.*;
->>>>>>> f3648857ccf008064cfda2e79c770f577dc0be63
 
 public class Packets {
 	// This is used for the packet templates

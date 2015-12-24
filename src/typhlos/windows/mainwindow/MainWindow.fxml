@@ -1,27 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typhlos.windows.mainwindow.MainWindowController">
-   <children>
-      <AnchorPane prefHeight="220.0" prefWidth="360.0">
-         <children>
-            <Label layoutX="154.0" layoutY="14.0" text="gjfxClient" />
-            <Label layoutX="76.0" layoutY="54.0" text="Username" />
-            <TextField fx:id="username" layoutX="28.0" layoutY="71.0" AnchorPane.leftAnchor="30.0" />
-            <PasswordField fx:id="password" layoutX="28.0" layoutY="127.0" AnchorPane.leftAnchor="30.0" />
-            <Label layoutX="78.0" layoutY="110.0" text="Password" />
-            <Button fx:id="login" layoutX="80.0" layoutY="173.0" mnemonicParsing="false" text="Login" />
-            <TextField fx:id="server" layoutX="197.0" layoutY="71.0" prefHeight="25.0" prefWidth="125.0" text="127.0.0.1" AnchorPane.rightAnchor="30.0" />
-            <TextField fx:id="port" layoutX="243.0" layoutY="127.0" prefHeight="25.0" prefWidth="50.0" text="2050" AnchorPane.rightAnchor="67.0" />
-            <Label layoutX="251.0" layoutY="54.0" text="Server" />
-            <Text layoutX="257.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Port" />
-            <Button fx:id="sendHello" layoutX="231.0" layoutY="173.0" mnemonicParsing="false" text="Send Hello" />
-         </children>
-      </AnchorPane>
-   </children>
-</AnchorPane>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <TabPane prefHeight="383.0" prefWidth="676.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Accounts">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="354.0" prefWidth="671.0">
+                           <children>
+                              <TreeView fx:id="accountView" layoutX="14.0" layoutY="28.0" prefHeight="250.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="25.0" />
+                              <Button fx:id="addAccButton" layoutX="7.0" layoutY="321.0" mnemonicParsing="false" prefWidth="95.0" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+                              <Button fx:id="loginAccButton" layoutX="220.0" layoutY="319.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Login" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="220.0" />
+                              <Button fx:id="deleteAccButton" layoutX="85.0" layoutY="324.0" mnemonicParsing="false" prefWidth="95.0" text="Delete" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="115.0" />
+                              <Label layoutX="84.0" layoutY="6.0" text="Accounts" />
+                              <ImageView fx:id="minimap" fitHeight="150.0" fitWidth="200.0" layoutX="462.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="25.0" />
+                              <Label layoutX="547.0" layoutY="6.0" text="Mini Map" />
+                              <Button fx:id="editAccButton" layoutX="14.0" layoutY="294.0" mnemonicParsing="false" prefWidth="200.0" text="Edit" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" />
+                              <ComboBox fx:id="serverList" layoutX="220.0" layoutY="284.0" maxWidth="100.0" prefHeight="25.0" prefWidth="150.0" promptText="Proxy" />
+                              <Label layoutX="324.0" layoutY="6.0" text="Character Info" />
+                              <Label layoutX="219.0" layoutY="116.0" text="Status" AnchorPane.leftAnchor="220.0" />
+                              <Label layoutX="314.0" layoutY="58.0" text="Inventory pic here" />
+                              <Label layoutX="218.0" layoutY="133.0" text="Level" AnchorPane.leftAnchor="220.0" />
+                              <Label layoutX="217.0" layoutY="150.0" text="Fame" AnchorPane.leftAnchor="220.0" />
+                              <Label layoutX="218.0" layoutY="209.0" text="Attack" AnchorPane.leftAnchor="220.0" />
+                              <Label layoutX="218.0" layoutY="226.0" text="Dexterity" AnchorPane.leftAnchor="220.0" />
+                              <Label layoutX="218.0" layoutY="243.0" text="Defence" AnchorPane.leftAnchor="220.0" />
+                              <Label layoutX="348.0" layoutY="209.0" text="Wisdom" AnchorPane.leftAnchor="350.0" />
+                              <Label layoutX="348.0" layoutY="226.0" text="Vitality" AnchorPane.leftAnchor="350.0" />
+                              <Label layoutX="350.0" layoutY="243.0" text="Speed" AnchorPane.leftAnchor="350.0" />
+                              <Label layoutX="218.0" layoutY="192.0" text="Health" AnchorPane.leftAnchor="220.0" />
+                              <Label layoutX="348.0" layoutY="192.0" text="Mana" AnchorPane.leftAnchor="350.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Overview">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="205.0" layoutY="14.0" text="Shows Total Stats for all accounts, items, fame etc." />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

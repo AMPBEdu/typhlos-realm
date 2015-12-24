@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="220.0" prefWidth="216.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typhlos.windows.LoginWindow.LoginWindowController">
+   <children>
+      <AnchorPane prefHeight="220.0" prefWidth="216.0">
+         <children>
+            <Label layoutX="68.0" layoutY="14.0" prefHeight="17.0" prefWidth="80.0" text="Typhlos Realm" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="68.0" />
+            <Label layoutX="76.0" layoutY="54.0" text="Username" />
+            <TextField fx:id="username" layoutX="28.0" layoutY="71.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+            <PasswordField fx:id="password" layoutX="28.0" layoutY="127.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+            <Label layoutX="78.0" layoutY="110.0" text="Password" />
+            <Button fx:id="login" layoutX="80.0" layoutY="173.0" mnemonicParsing="false" text="Login" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="85.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

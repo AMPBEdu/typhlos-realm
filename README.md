@@ -1,5 +1,5 @@
 [![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)  
-<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">Typhlosis Realm</span> by [Andrew Bueide/Gratin/AMPBEdu](https://github.com/AMPBEdu/) is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">Typhlos Realm</span> by [Andrew Bueide/Gratin/AMPBEdu](https://github.com/AMPBEdu/) is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 If you appreciate my work, please donate. I would be extremely grateful.
 BTC: 1KiADgX8ynH4K7Z7teC6GwjbKjb34i6vjs

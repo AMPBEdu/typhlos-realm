@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typhlos.windows.mainwindow.MainWindowController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -55,7 +55,7 @@
               <tabs>
                 <Tab text="Accounts">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="354.0" prefWidth="671.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="600.0">
                            <children>
                               <TreeView fx:id="accountView" layoutX="14.0" layoutY="28.0" prefHeight="250.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="25.0" />
                               <Button fx:id="addAccButton" layoutX="7.0" layoutY="321.0" mnemonicParsing="false" prefWidth="95.0" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
@@ -64,8 +64,8 @@
                               <Label layoutX="84.0" layoutY="6.0" text="Accounts" />
                               <ImageView fx:id="minimap" fitHeight="150.0" fitWidth="200.0" layoutX="462.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="25.0" />
                               <Label layoutX="547.0" layoutY="6.0" text="Mini Map" />
-                              <Button fx:id="editAccButton" layoutX="14.0" layoutY="294.0" mnemonicParsing="false" prefWidth="200.0" text="Edit" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" />
-                              <ComboBox fx:id="serverList" layoutX="220.0" layoutY="284.0" maxWidth="100.0" prefHeight="25.0" prefWidth="150.0" promptText="Proxy" />
+                              <Button fx:id="editAccButton" layoutX="14.0" layoutY="294.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Edit" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" />
+                              <ComboBox fx:id="serverList" layoutX="220.0" layoutY="284.0" maxWidth="100.0" prefHeight="25.0" prefWidth="150.0" promptText="Proxy" AnchorPane.bottomAnchor="45.0" />
                               <Label layoutX="324.0" layoutY="6.0" text="Character Info" />
                               <Label layoutX="219.0" layoutY="116.0" text="Status" AnchorPane.leftAnchor="220.0" />
                               <Label layoutX="314.0" layoutY="58.0" text="Inventory pic here" />
@@ -79,6 +79,7 @@
                               <Label layoutX="350.0" layoutY="243.0" text="Speed" AnchorPane.leftAnchor="350.0" />
                               <Label layoutX="218.0" layoutY="192.0" text="Health" AnchorPane.leftAnchor="220.0" />
                               <Label layoutX="348.0" layoutY="192.0" text="Mana" AnchorPane.leftAnchor="350.0" />
+                              <Button fx:id="loadCharacters" layoutX="113.0" layoutY="279.0" mnemonicParsing="false" prefWidth="95.0" text="Load Chars" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="115.0" />
                            </children>
                         </AnchorPane>
                   </content>
